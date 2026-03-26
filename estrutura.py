@@ -1,34 +1,36 @@
+from models import Produto
+
 class FilaEstoque:
     def __init__(self):
-        self.__itens = [] 
+        self.itens = [] 
 
     def enqueue(self, produto):
         if isinstance(produto, Produto):
-            self.__itens.append(produto)
+            self.itens.append(produto)
         else:
-            raise TypeError("Apenas objetos da classe Produto podem ser adicionados.")
+            raise TypeError("O item deve ser um objeto da classe Produto")
 
     def dequeue(self):
         if not self.is_empty():
-            return self.__itens.pop(0)
+            return self.itens.pop(0)
         return None
 
     def is_empty(self):
-        return len(self.__itens) == 0
+        return len(self.itens) == 0
 
     def listar_produtos(self):
-        return list(self.__itens) 
+        return list(self.itens)
 
 class ListaPagamentos:
     def __init__(self):
-        self._pagamentos = []
+        self.pagamentos = [] 
 
     def adicionar(self, pagamento):
-        self._pagamentos.append(pagamento)
+        self.pagamentos.append(pagamento)
 
 class ListaConsumo:
     def __init__(self):
-        self._consumos = []
+        self.consumos = []
 
     def adicionar(self, consumo):
-        self._consumos.append(consumo)
+        self.consumos.append(consumo)
