@@ -1,27 +1,34 @@
 class FilaEstoque:
     def __init__(self):
-        self.itens = []
+        self.__itens = [] # Uso de __ para private real (name mangling)
 
     def enqueue(self, produto):
-        self.itens.append(produto)
+        if isinstance(produto, Produto):
+            self.__itens.append(produto)
+        else:
+            raise TypeError("Apenas objetos da classe Produto podem ser adicionados.")
 
     def dequeue(self):
         if not self.is_empty():
-            return self.itens.pop(0)
+            return self.__itens.pop(0)
+        return None
 
     def is_empty(self):
-        return len(self.itens) == 0
-    
+        return len(self.__itens) == 0
+
+    def listar_produtos(self):
+        return list(self.__itens) # Retorna uma cópia para proteger a lista original
+
 class ListaPagamentos:
     def __init__(self):
-        self.pagamentos = []
+        self._pagamentos = []
 
     def adicionar(self, pagamento):
-        self.pagamentos.append(pagamento)
+        self._pagamentos.append(pagamento)
 
 class ListaConsumo:
     def __init__(self):
-        self.consumos = []
+        self._consumos = []
 
     def adicionar(self, consumo):
-        self.consumos.append(consumo)
+        self._consumos.append(consumo)
