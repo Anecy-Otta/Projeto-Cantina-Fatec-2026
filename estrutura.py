@@ -1,6 +1,6 @@
 class FilaEstoque:
     def __init__(self):
-        self.__itens = [] # Uso de __ para private real (name mangling)
+        self.__itens = [] 
 
     def enqueue(self, produto):
         if isinstance(produto, Produto):
@@ -17,7 +17,7 @@ class FilaEstoque:
         return len(self.__itens) == 0
 
     def listar_produtos(self):
-        return list(self.__itens) # Retorna uma cópia para proteger a lista original
+        return list(self.__itens) 
 
 class ListaPagamentos:
     def __init__(self):
